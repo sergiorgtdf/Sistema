@@ -1,13 +1,12 @@
 
 package sistema;
 
-import DataAccess.ConexionAccess;
 import static java.awt.image.ImageObserver.ERROR;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import vista.SplashScreen;
-import vista.frmLogin;
+import vista.frmPrincipal;
 
 
 
@@ -25,6 +24,7 @@ public class Sistema {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error en en Look and Feel", "Error", ERROR);
                 }
+                
                 new SplashScreen().setVisible(true);
             }
         });

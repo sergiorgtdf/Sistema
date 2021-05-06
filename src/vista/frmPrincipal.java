@@ -5,28 +5,24 @@
  */
 package vista;
 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import logica.menuBO;
-import modelo.menuVO;
-import sistema.Global;
-
 /**
  *
  * @author solmedo
  */
 public class frmPrincipal extends javax.swing.JFrame {
 
-    private menuBO boMenu = null;
-
+    
     /**
      * Creates new form frmPrincipal
      */
+    
     public frmPrincipal() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-        TareasInicio();
+    }
+    
+    public frmPrincipal(frmPrincipal v) {
+        initComponents();
+       
     }
 
     /**
@@ -206,41 +202,31 @@ public class frmPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "¿Desea salir del sistema?",
-                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        JOptionPane.showMessageDialog(null, "En Contrucción", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        JOptionPane.showMessageDialog(null, "En Contrucción", "Sistema", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-   
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    private void TareasInicio() {
-        boMenu = new menuBO();
-        lblUsuario.setText(Global.UsuarioActual.getNombres());
+
+    public static void main(String[] args) {
+         /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmPrincipal().setVisible(true);
+            }
+        });
     }
-
-    private void CargarMenu() {
-
-        ArrayList<menuVO> MenuBar = boMenu.getCargarMenu(0);
-
-        for (menuVO vO : MenuBar) {
-
-        }
-
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenuBar BarraMenu;
     public javax.swing.JDesktopPane escritorio;

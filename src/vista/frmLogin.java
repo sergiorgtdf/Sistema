@@ -5,14 +5,9 @@
  */
 package vista;
 
+import Controlador.ctrPrincipal;
 import logica.usuarioBO;
-import java.awt.HeadlessException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import modelo.usuarioVO;
 import sistema.Global;
 
 /**
@@ -36,13 +31,15 @@ public class frmLogin extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         //this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/principal/logo.png")).getImage());
-        this.setTitle("ACCESO AL SISTEMA - MRG");
-        setProgress(20, "Conectandose a la Base de Datos...");
-        setProgress(40, "Cargando Modulos..");
-        setProgress(60, "Carga de Modulos Terminada");
-        setProgress(80, "Cargando Interfaces..");
-        setProgress(90, "Interfaces Cargadas");
-        setProgress(100, "Bienvenido al Sistema");
+        /**
+         * *
+         * this.setTitle("ACCESO AL SISTEMA - MRG"); setProgress(20,
+         * "Conectandose a la Base de Datos..."); setProgress(40, "Cargando
+         * Modulos.."); setProgress(60, "Carga de Modulos Terminada");
+         * setProgress(80, "Cargando Interfaces.."); setProgress(90, "Interfaces
+         * Cargadas"); setProgress(100, "Bienvenido al Sistema");
+        **
+         */
         this.setLocationRelativeTo(null);
     }
 
@@ -182,6 +179,7 @@ public class frmLogin extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String us = txtUsuario.getText();
         String pas = txtPass.getText();
+
         if (us.equals("") || pas.equals("")) {
             JOptionPane.showMessageDialog(null, "Los campos son obligatorios", "Inicio de Sesión", JOptionPane.INFORMATION_MESSAGE);
 
@@ -192,13 +190,17 @@ public class frmLogin extends javax.swing.JFrame {
                 if (bo.Login(us, pas)) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al sistema " + Global.UsuarioActual.getNombres(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
-                    new frmPrincipal().setVisible(true);
-                }else{
+                    frmPrincipal v = new frmPrincipal();
+
+                    new ctrPrincipal(v).go();
+
+                } else {
                     JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
                     txtUsuario.setText("");
                     txtPass.setText("");
                 }
             } catch (Exception e) {
+
                 JOptionPane.showMessageDialog(null, "Error: " + e, "Sistema", JOptionPane.ERROR_MESSAGE);
             }
 
