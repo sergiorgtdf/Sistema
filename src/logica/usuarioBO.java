@@ -45,4 +45,8 @@ public class usuarioBO {
         
     }
     
+    public int getTotalUsuarios() {
+        return da.getTotalUsuarios();
+    }
+    
 }

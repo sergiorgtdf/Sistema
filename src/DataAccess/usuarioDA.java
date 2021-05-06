@@ -69,6 +69,34 @@ public class usuarioDA {
 
         return Listado;
     }
+    
+    
+     public int getTotalUsuarios() {
+        
+         int Cantidad=0;
+
+        String sql = "";
+
+        sql = "Select count(*) from usuario where eliminado = 'N'";
+
+        try {
+            Statement st = cx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+
+            while (rs.next()) {
+
+                Cantidad = rs.getInt(1);
+                
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Acceso_Datos.usuarios.usuarioDA.ObtenerUsuarios()");
+
+        }
+
+        return Cantidad;
+    }
     //// </editor-fold>  
 
     // <editor-fold defaultstate="collapsed" desc="Obtener Usuario y Contraseña">

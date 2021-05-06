@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import logica.usuarioBO;
 import sistema.Global;
 import vista.frmListadoBase;
 import vista.frmPrincipal;
@@ -55,6 +56,8 @@ public class ctrPrincipal implements ActionListener {
         this.Principal.mnuSalir.addActionListener(this);
         this.Principal.mnuUsuarios.addActionListener(this);
 
+        
+        cargarDatos();
     }
 
     private void Salir() {
@@ -195,6 +198,13 @@ public class ctrPrincipal implements ActionListener {
             //}
         }
 
+    }
+
+    private void cargarDatos() {
+        usuarioBO boUsuario = new usuarioBO();
+        String n = String.valueOf(boUsuario.getTotalUsuarios());
+        this.Principal.lblCantidadUsuarios.setText( n );
+        
     }
 
 }

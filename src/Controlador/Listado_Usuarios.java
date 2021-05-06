@@ -111,12 +111,14 @@ public class Listado_Usuarios implements ActionListener {
                 modelotabla.addRow(new Object[]{filas.get(i).getId(), filas.get(i).getNombres(), filas.get(i).getApellidos(), filas.get(i).getTipo_doc(), filas.get(i).getDocumento(), filas.get(i).getFecha_nacimiento(),
                 filas.get(i).getFecha_alta(), filas.get(i).getFecha_baja(), filas.get(i).getEstado(), filas.get(i).getEliminado(), filas.get(i).getUsuario(), filas.get(i).getPass(), filas.get(i).getFechaPass()});
             }
-           //this.formListado.lblCantidadRegistros.setText( String.valueOf(filas.size()));
+           this.formListado.lblCantidadRegistros.setText( String.valueOf(filas.size()));
         } catch (Exception e) {
             System.out.println("Controlador.Listado_Usuarios.CargarDatos()");
             JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
         }
 
     }
+
+   
     
 }
