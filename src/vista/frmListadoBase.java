@@ -32,7 +32,7 @@ public class frmListadoBase extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaDatos = new javax.swing.JTable();
         pnlBotonera = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -76,7 +76,7 @@ public class frmListadoBase extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -87,7 +87,7 @@ public class frmListadoBase extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaDatos);
 
         pnlBotonera.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -156,15 +156,15 @@ public class frmListadoBase extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnImprimir;
-    private javax.swing.JButton btnNuevo;
+    public javax.swing.JTable TablaDatos;
+    public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnImprimir;
+    public javax.swing.JButton btnNuevo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblTitulo;
+    public javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlBotonera;
-    private javax.swing.JPanel pnlTitulo;
-    private javax.swing.JTextField txtBuscar;
+    public javax.swing.JPanel pnlTitulo;
+    public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
