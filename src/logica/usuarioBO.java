@@ -21,7 +21,7 @@ public class usuarioBO {
     public ArrayList<usuarioVO> getListado (String pBusqueda){
         ArrayList<usuarioVO> datos ;
         try {
-            datos = da.ObtenerUsuarios();
+            datos = da.getUsuarios(pBusqueda);
         } catch (Exception e) {
             System.out.println("Logica.usuarioBO.getListado()");
             throw e;

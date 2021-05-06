@@ -5,11 +5,13 @@
  */
 package vista;
 
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author Sergio Olmedo
  */
-public class frmListadoBase extends javax.swing.JFrame {
+public class frmListadoBase extends JInternalFrame {
 
     /**
      * Creates new form frmListadoBase
@@ -37,18 +39,20 @@ public class frmListadoBase extends javax.swing.JFrame {
         btnNuevo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblCantidadRegistros = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        pnlTitulo.setBackground(new java.awt.Color(0, 0, 153));
+        pnlTitulo.setBackground(new java.awt.Color(52, 73, 94));
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("Titulo");
 
-        txtBuscar.setBackground(new java.awt.Color(0, 0, 153));
+        txtBuscar.setBackground(new java.awt.Color(52, 73, 94));
         txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
         txtBuscar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
 
@@ -76,12 +80,10 @@ public class frmListadoBase extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
+        TablaDatos.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         TablaDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -89,13 +91,19 @@ public class frmListadoBase extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaDatos);
 
-        pnlBotonera.setBackground(new java.awt.Color(204, 204, 204));
+        pnlBotonera.setBackground(new java.awt.Color(52, 73, 94));
 
         btnNuevo.setText("Nuevo");
 
         btnEditar.setText("Editar");
 
         btnImprimir.setText("Imprimir");
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cantidad de Registros:");
+
+        lblCantidadRegistros.setForeground(new java.awt.Color(255, 255, 255));
+        lblCantidadRegistros.setText("0");
 
         javax.swing.GroupLayout pnlBotoneraLayout = new javax.swing.GroupLayout(pnlBotonera);
         pnlBotonera.setLayout(pnlBotoneraLayout);
@@ -108,16 +116,27 @@ public class frmListadoBase extends javax.swing.JFrame {
                 .addComponent(btnEditar)
                 .addGap(44, 44, 44)
                 .addComponent(btnImprimir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCantidadRegistros)
+                .addGap(40, 40, 40))
         );
         pnlBotoneraLayout.setVerticalGroup(
             pnlBotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBotoneraLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(pnlBotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo)
-                    .addComponent(btnEditar)
-                    .addComponent(btnImprimir))
+                .addGroup(pnlBotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBotoneraLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pnlBotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNuevo)
+                            .addComponent(btnEditar)
+                            .addComponent(btnImprimir)))
+                    .addGroup(pnlBotoneraLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlBotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblCantidadRegistros))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -160,8 +179,10 @@ public class frmListadoBase extends javax.swing.JFrame {
     public javax.swing.JButton btnEditar;
     public javax.swing.JButton btnImprimir;
     public javax.swing.JButton btnNuevo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel lblCantidadRegistros;
     public javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlBotonera;
     public javax.swing.JPanel pnlTitulo;

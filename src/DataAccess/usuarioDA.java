@@ -23,13 +23,21 @@ public class usuarioDA {
     }
 
     // <editor-fold defaultstate="collapsed" desc="ObtenerUsuarios">
-    public ArrayList<usuarioVO> ObtenerUsuarios() {
+    public ArrayList<usuarioVO> getUsuarios(String pBusqueda) {
         ArrayList<usuarioVO> Listado = new ArrayList();
 
         String sql = "";
 
         sql = "Select * from usuario where eliminado = 'N'";
 
+//        if (pid > 0) {
+//            sql = "Select * from usuario where id = " + pid + " and eliminado = 'N'";
+//        }
+//        if (!pBusqueda.equals("")) {
+//            sql = "Select * from usuario where usuario like '%" + pBusqueda + "%' and eliminado = 'N'";
+//        }
+
+        System.out.println(sql);
         try {
             Statement st = cx.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -76,7 +84,7 @@ public class usuarioDA {
         sql = "Select u.id, u.nombre, u.apellido, u.tipo_doc, u.documento, u.fecha_nacimiento, u.fecha_alta, u.fecha_baja, u.estado, u.eliminado, u.usuario, u.pass, u.fecha_pass"
                 + " from usuario u where u.usuario = ? and u.pass = ? and u.eliminado = 'N'";
 
-        System.out.println(sql);
+        //System.out.println(sql);
 
         try {
             pst = cx.prepareStatement(sql);
@@ -87,7 +95,6 @@ public class usuarioDA {
 
             while (rs.next()) {
 
-                
                 datos = new usuarioVO(
                         rs.getInt(1),
                         rs.getString(2),

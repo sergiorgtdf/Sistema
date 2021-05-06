@@ -188,7 +188,7 @@ public class frmLogin extends javax.swing.JFrame {
             usuarioBO bo = new usuarioBO();
             try {
                 if (bo.Login(us, pas)) {
-                    JOptionPane.showMessageDialog(null, "Bienvenido al sistema " + Global.UsuarioActual.getNombres(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "Bienvenido al sistema " + Global.UsuarioActual.getNombres(), "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
                     this.dispose();
                     frmPrincipal v = new frmPrincipal();
 
