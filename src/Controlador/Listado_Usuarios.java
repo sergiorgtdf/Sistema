@@ -52,21 +52,14 @@ public class Listado_Usuarios implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == formListado.btnNuevo) {
 
-            JOptionPane.showMessageDialog(null, "En construccion", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+            Nuevo();
 
         }
 
         if (e.getSource() == formListado.btnEditar) {
 
-            int fila = formListado.TablaDatos.getSelectedRow();
-            if (fila == -1) {
-                JOptionPane.showMessageDialog(formListado, "Debee Seleccionar Una fila..!!");
-            } else {
-                int id = Integer.parseInt((String) formListado.TablaDatos.getValueAt(fila, 0).toString());
-
-            }
-
-            JOptionPane.showMessageDialog(null, "En construccion", "Sistema", JOptionPane.INFORMATION_MESSAGE);
+            
+            Editar();
 
         }
 
@@ -77,6 +70,38 @@ public class Listado_Usuarios implements ActionListener {
         }
     }
 
+    
+    private void Nuevo() {
+       new crtUsuarios(formListado,0).go();
+       
+    }
+    
+    private void Editar() {
+        int Seleccionado = 0;
+        int idSeleccionado = 0;
+
+        
+        try {
+            Seleccionado = this.formListado.TablaDatos.getSelectedRow();
+            if (Seleccionado == -1) {
+                JOptionPane.showMessageDialog(null, "No ha seleccionado ninguna fila.");
+
+            } else {
+                idSeleccionado = Integer.parseInt(String.valueOf(this.formListado.TablaDatos.getValueAt(Seleccionado, 0).toString()));
+                System.out.println("idseleccionado: " + idSeleccionado);
+                try {
+                    new crtUsuarios(formListado,idSeleccionado).go();
+                } catch (Exception e) {
+                    System.out.println("Controlador.Listado_Usuarios.Editar()");
+                }
+
+      
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
     
     private void CargarDatos(int pid, String pBusqueda) {
 
@@ -104,7 +129,7 @@ public class Listado_Usuarios implements ActionListener {
 
             this.formListado.TablaDatos.setModel(modelotabla);
 
-            ArrayList<usuarioVO> filas = bo.getListado(strBusqueda);
+            ArrayList<usuarioVO> filas = bo.getListado(0, strBusqueda);
 
             for (int i = 0; i < filas.size(); i++) {
             //{"id", "Nombre", "Apellidos", "Tipo Doc", "Documento", "Fecha de Nacimento", "Fecha Alta", "Fecha Baja", "Estado", "Eliminado", "Nombre Usuario", "Contraseña", "Fecha Contraseña"};

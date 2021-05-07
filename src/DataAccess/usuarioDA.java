@@ -13,6 +13,8 @@ import sistema.Global;
 public class usuarioDA {
 
     Connection cx = null;
+    PreparedStatement ps;
+    ResultSet rs;
 
     public usuarioDA() {
         try {
@@ -23,19 +25,19 @@ public class usuarioDA {
     }
 
     // <editor-fold defaultstate="collapsed" desc="ObtenerUsuarios">
-    public ArrayList<usuarioVO> getUsuarios(String pBusqueda) {
+    public ArrayList<usuarioVO> getUsuarios(int pId, String pBusqueda) {
         ArrayList<usuarioVO> Listado = new ArrayList();
 
         String sql = "";
 
         sql = "Select * from usuario where eliminado = 'N'";
 
-//        if (pid > 0) {
-//            sql = "Select * from usuario where id = " + pid + " and eliminado = 'N'";
-//        }
-//        if (!pBusqueda.equals("")) {
-//            sql = "Select * from usuario where usuario like '%" + pBusqueda + "%' and eliminado = 'N'";
-//        }
+        if (pId > 0) {
+            sql = "Select * from usuario where id = " + pId + " and eliminado = 'N'";
+        }
+        if (!pBusqueda.equals("")) {
+            sql = "Select * from usuario where usuario like '%" + pBusqueda + "%' and eliminado = 'N'";
+        }
 
         System.out.println(sql);
         try {
@@ -69,11 +71,10 @@ public class usuarioDA {
 
         return Listado;
     }
-    
-    
-     public int getTotalUsuarios() {
-        
-         int Cantidad=0;
+
+    public int getTotalUsuarios() {
+
+        int Cantidad = 0;
 
         String sql = "";
 
@@ -82,12 +83,11 @@ public class usuarioDA {
         try {
             Statement st = cx.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            
 
             while (rs.next()) {
 
                 Cantidad = rs.getInt(1);
-                
+
             }
         } catch (SQLException e) {
 
@@ -113,7 +113,6 @@ public class usuarioDA {
                 + " from usuario u where u.usuario = ? and u.pass = ? and u.eliminado = 'N'";
 
         //System.out.println(sql);
-
         try {
             pst = cx.prepareStatement(sql);
             pst.setString(1, pUser);
@@ -152,4 +151,77 @@ public class usuarioDA {
         return Usuario;
     }
     //// </editor-fold>  
+
+    public int NuevoUsuario(usuarioVO Modificacion) {
+
+        int r = 0;
+        String sql = "insert into persona(Nombres,Correo,Telefono)values(?,?,?)";
+        try {
+
+            ps = cx.prepareStatement(sql);
+            //agrega 
+            //ps.setString(1, per.getNom());
+            //ps.setString(2, per.getCorreo());
+            //ps.setString(3, per.getTelefono());
+            r = ps.executeUpdate();
+            if (r == 1) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+        }
+        return r;
+
+    }
+
+    public boolean ActualizarUsuario(usuarioVO mod) {
+        boolean resp = false;
+        int r=0;
+        String sql = "update usuario set "
+                + "Nombres=?, "
+                + "apellidos=?, "
+                + "tipo_doc=?, "
+                + "documento=?, "
+                + "fecha_nacimiento, "
+                + "estado=?, "
+                + "usuario=?, "
+                + "pass=? "
+                + "where id=?";
+        
+        try {
+            
+            cx.setAutoCommit(false);
+            ps = cx.prepareStatement(sql);
+            
+            ps.setString(1, mod.getNombres());
+            ps.setString(2, mod.getApellidos());
+            ps.setInt(3, mod.getTipo_doc());
+            ps.setString(4, mod.getDocumento());
+            ps.setDate(5, mod.getFecha_nacimiento());
+            ps.setInt(6, mod.getEstado());
+            ps.setString(7, mod.getUsuario());
+            ps.setString(8, mod.getPass());
+            ps.setInt(9, mod.getId());
+            
+            System.out.println(sql);
+            
+            r = ps.executeUpdate();
+            
+            cx.commit();
+            
+            
+            if (r == 1) {
+                return true;
+            } else {
+                return false;
+            }
+            
+            
+        } catch (Exception e) {
+            System.out.println("DataAccess.usuarioDA.ActualizarUsuario()");
+        }
+        return resp;
+    }
+
 }

@@ -18,10 +18,10 @@ public class usuarioBO {
     }
     
     
-    public ArrayList<usuarioVO> getListado (String pBusqueda){
+    public ArrayList<usuarioVO> getListado (int pId, String pBusqueda){
         ArrayList<usuarioVO> datos ;
         try {
-            datos = da.getUsuarios(pBusqueda);
+            datos = da.getUsuarios(pId, pBusqueda);
         } catch (Exception e) {
             System.out.println("Logica.usuarioBO.getListado()");
             throw e;
@@ -47,6 +47,29 @@ public class usuarioBO {
     
     public int getTotalUsuarios() {
         return da.getTotalUsuarios();
+    }
+    
+    public void Guardar (usuarioVO Modificacion) throws Exception{
+    
+        try {
+            
+            throw new Exception("");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    
+    public boolean ActualizarUsuario(usuarioVO mod) {
+        boolean res=false;
+        
+        try {
+            res = da.ActualizarUsuario(mod);
+        } catch (Exception e) {
+            System.out.println("logica.usuarioBO.ActualizarUsuario()");
+            throw e;
+        }
+        return res;
     }
     
 }
