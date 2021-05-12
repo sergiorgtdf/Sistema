@@ -5,12 +5,7 @@
  */
 package vista;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import vista.Paneles.Config;
-import vista.Paneles.Dash;
-import vista.Paneles.Usuarios;
 
 /**
  *
@@ -24,18 +19,17 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
      * Creates new form frmPrincipalMetro
      */
     public frmPrincipalMetro() {
-        Dash d = new Dash();
+        //Dash d = new Dash();
 
         initComponents();
 
-        this.setLocationRelativeTo(null);
-        this.setExtendedState(this.MAXIMIZED_BOTH);//estado maximizado
+       
         
-        Contenedor.add(d);
+        //Contenedor.add(d);
 
-        Contenedor.revalidate();
-        Contenedor.repaint();
-        btnDash.setSelected(true);
+        //Contenedor.revalidate();
+        //Contenedor.repaint();
+        //btnDash.setSelected(true);
 
     }
 
@@ -50,7 +44,7 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
 
         botonera = new javax.swing.ButtonGroup();
         Panel_Botonera = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnDash = new javax.swing.JToggleButton();
         btnUsuarios = new javax.swing.JToggleButton();
@@ -64,12 +58,12 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
 
         Panel_Botonera.setBackground(new java.awt.Color(34, 45, 49));
 
-        jLabel2.setBackground(new java.awt.Color(54, 127, 168));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Sistema");
-        jLabel2.setOpaque(true);
+        lblTitulo.setBackground(new java.awt.Color(54, 127, 168));
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Sistema");
+        lblTitulo.setOpaque(true);
 
         jLabel8.setBackground(new java.awt.Color(54, 127, 168));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -137,7 +131,7 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
         Panel_Botonera.setLayout(Panel_BotoneraLayout);
         Panel_BotoneraLayout.setHorizontalGroup(
             Panel_BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnDash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,7 +145,7 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
         Panel_BotoneraLayout.setVerticalGroup(
             Panel_BotoneraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel_BotoneraLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125)
                 .addComponent(btnDash)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,7 +189,7 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
         );
 
         Contenedor.setBackground(new java.awt.Color(204, 204, 204));
-        Contenedor.setLayout(new java.awt.GridLayout());
+        Contenedor.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,26 +215,22 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
-        Dash d = new Dash();
         
-
-        MostrarPanel(d);
         
     }//GEN-LAST:event_btnDashActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        Usuarios u = new Usuarios();
-        MostrarPanel(u);
+        
+        
         
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
+        
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        Config c = new Config();
-        MostrarPanel(c);
+        
                 
     }//GEN-LAST:event_btnConfigActionPerformed
 
@@ -290,16 +280,16 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Contenedor;
+    public javax.swing.JPanel Contenedor;
     private javax.swing.JPanel Panel_BarraTitulo;
     private javax.swing.JPanel Panel_Botonera;
     private javax.swing.ButtonGroup botonera;
-    private javax.swing.JToggleButton btnConfig;
-    private javax.swing.JToggleButton btnDash;
-    private javax.swing.JToggleButton btnSalir;
-    private javax.swing.JToggleButton btnUsuarios;
+    public javax.swing.JToggleButton btnConfig;
+    public javax.swing.JToggleButton btnDash;
+    public javax.swing.JToggleButton btnSalir;
+    public javax.swing.JToggleButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
+    public javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

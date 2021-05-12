@@ -10,18 +10,20 @@ import componentes.modal.FadeEffect;
 import javax.swing.JPanel;
 
 
-public class editaUsuario extends javax.swing.JFrame {
+public class frmModal extends javax.swing.JFrame {
 
     private JPanel estepan;
     /**
      * Creates new form editaUsuario
      */
-    public editaUsuario(JPanel panel) {
-        this.estepan = panel;
+    public frmModal() {
+       
         initComponents();
-        this.jEImagePanel1.add(this.estepan);
-        this.jEImagePanel1.revalidate();
-        this.jEImagePanel1.repaint();
+        //this.estepan= pPanel;
+        //this.jEImagePanel1.removeAll();
+        //this.jEImagePanel1.add(this.estepan);
+        //this.jEImagePanel1.revalidate();
+        //this.jEImagePanel1.repaint();
         
 
         FadeEffect.transp(this);
@@ -37,24 +39,24 @@ public class editaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jEImagePanel1 = new componentes.modal.JEImagePanel();
+        Contenedor = new componentes.modal.JEImagePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName(""); // NOI18N
         setUndecorated(true);
 
-        jEImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componentes/modal/img/fondotransparente.png"))); // NOI18N
-        jEImagePanel1.setLayout(new java.awt.GridBagLayout());
+        Contenedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componentes/modal/img/fondotransparente.png"))); // NOI18N
+        Contenedor.setLayout(new java.awt.GridBagLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jEImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jEImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
         );
 
         pack();
@@ -77,13 +79,13 @@ public class editaUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(editaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmModal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(editaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmModal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(editaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmModal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(editaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmModal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -93,9 +95,17 @@ public class editaUsuario extends javax.swing.JFrame {
 //                new editaUsuario().setVisible(true);
 //            }
 //        });
+        //</editor-fold>
+
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new frmModal().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private componentes.modal.JEImagePanel jEImagePanel1;
+    public componentes.modal.JEImagePanel Contenedor;
     // End of variables declaration//GEN-END:variables
 }

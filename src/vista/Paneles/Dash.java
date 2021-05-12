@@ -45,7 +45,7 @@ public class Dash extends javax.swing.JPanel {
         Likes1 = new javax.swing.JPanel();
         lblIcono3 = new javax.swing.JLabel();
         lblTitulo3 = new javax.swing.JLabel();
-        lblInfo3 = new javax.swing.JLabel();
+        lblDashUsuarios = new javax.swing.JLabel();
 
         pnlDash.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -191,11 +191,11 @@ public class Dash extends javax.swing.JPanel {
 
         lblTitulo3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo3.setForeground(new java.awt.Color(102, 102, 102));
-        lblTitulo3.setText("Members");
+        lblTitulo3.setText("Usuario");
 
-        lblInfo3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblInfo3.setForeground(new java.awt.Color(51, 51, 51));
-        lblInfo3.setText("4.140");
+        lblDashUsuarios.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblDashUsuarios.setForeground(new java.awt.Color(51, 51, 51));
+        lblDashUsuarios.setText("4.140");
 
         javax.swing.GroupLayout Likes1Layout = new javax.swing.GroupLayout(Likes1);
         Likes1.setLayout(Likes1Layout);
@@ -206,7 +206,7 @@ public class Dash extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Likes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Likes1Layout.createSequentialGroup()
-                        .addComponent(lblInfo3)
+                        .addComponent(lblDashUsuarios)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(Likes1Layout.createSequentialGroup()
                         .addComponent(lblTitulo3, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
@@ -219,7 +219,7 @@ public class Dash extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTitulo3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblInfo3)
+                .addComponent(lblDashUsuarios)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -288,6 +288,7 @@ public class Dash extends javax.swing.JPanel {
     private javax.swing.JPanel Sales;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel lblDashUsuarios;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblIcono1;
     private javax.swing.JLabel lblIcono2;
@@ -295,7 +296,6 @@ public class Dash extends javax.swing.JPanel {
     private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblInfo1;
     private javax.swing.JLabel lblInfo2;
-    private javax.swing.JLabel lblInfo3;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo2;

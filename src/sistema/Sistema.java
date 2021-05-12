@@ -1,6 +1,7 @@
 
 package sistema;
 
+import Controlador.ctrPrincipalMetro;
 import static java.awt.image.ImageObserver.ERROR;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -38,8 +39,9 @@ public class Sistema {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error en en Look and Feel", "Error", ERROR);
                 }
-                
-                new frmPrincipalMetro().setVisible(true);
+                frmPrincipalMetro v = new frmPrincipalMetro();
+                new ctrPrincipalMetro(v).go();
+                //new frmPrincipalMetro().setVisible(true);
                 //new SplashScreen().setVisible(true);
             }
         });

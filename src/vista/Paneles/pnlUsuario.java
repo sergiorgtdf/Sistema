@@ -5,6 +5,8 @@
  */
 package vista.Paneles;
 
+import sun.java2d.d3d.D3DRenderQueue;
+
 /**
  *
  * @author solmedo
@@ -91,6 +93,11 @@ public class pnlUsuario extends javax.swing.JPanel {
         jButton1.setText("Agregar");
 
         jButton2.setText("Quitar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAreasLayout = new javax.swing.GroupLayout(pnlAreas);
         pnlAreas.setLayout(pnlAreasLayout);
@@ -254,6 +261,10 @@ public class pnlUsuario extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

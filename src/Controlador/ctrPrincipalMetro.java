@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import Controlador.old.Listado_Usuarios;
 import componentes.Reloj;
 import componentes.traerIP;
 import java.awt.event.ActionEvent;
@@ -14,22 +13,24 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import logica.usuarioBO;
 import sistema.Global;
+import vista.Paneles.Dash;
 import vista.frmListadoBase;
 import vista.frmPrincipal;
+import vista.frmPrincipalMetro;
 
 /**
  *
  * @author solmedo
  */
-public class ctrPrincipal implements ActionListener {
+public class ctrPrincipalMetro implements ActionListener {
 
     private Reloj hilo;
-    private frmPrincipal Principal;
+    private frmPrincipalMetro Principal;
     
-    private frmListadoBase frmListado;
+    
     
 
-    public ctrPrincipal(frmPrincipal v) {
+    public ctrPrincipalMetro(frmPrincipalMetro v) {
         this.Principal = v;
         TareasInicio();
 
@@ -37,26 +38,30 @@ public class ctrPrincipal implements ActionListener {
 
     private void TareasInicio() {
         //Titulo ventana - 
-        Principal.setTitle("Sistema - MRG");
+        Principal.setTitle("Sistema - MRG - ctr");
+        Principal.lblTitulo.setText("Sistema - MRG - ctr");
         Principal.setLocationRelativeTo(null);
         Principal.setExtendedState(Principal.MAXIMIZED_BOTH);//estado maximizado
 
-        this.Principal.lblIp.setText(traerIP.getIP());
-        this.Principal.lblHost.setText(traerIP.getHostname());
+        //this.Principal.lblIp.setText(traerIP.getIP());
+        //this.Principal.lblHost.setText(traerIP.getHostname());
 
-        this.Principal.lblUsuario.setText(Global.UsuarioActual.getNombres());
+        //this.Principal.lblUsuario.setText(Global.UsuarioActual.getNombres());
 
-        hilo = new Reloj(this.Principal.lbHora, this.Principal.lblFecha);
-        hilo.start();
+        //hilo = new Reloj(this.Principal.lbHora, this.Principal.lblFecha);
+        //hilo.start();
 
         //Se añade las acciones a los controles del formulario padre
-        this.Principal.mnuSalir.setActionCommand("SALIR");
-        this.Principal.mnuUsuarios.setActionCommand("USUARIOS");
+        this.Principal.btnSalir.setActionCommand("SALIR");
+        this.Principal.btnDash.setActionCommand("DASH");
+        this.Principal.btnUsuarios.setActionCommand("USUARIOS");
+        this.Principal.btnConfig.setActionCommand("CONFIG");
 
         //Se pone a escuchar las acciones del usuario
-        this.Principal.mnuSalir.addActionListener(this);
-        this.Principal.mnuUsuarios.addActionListener(this);
-
+        this.Principal.btnSalir.addActionListener(this);
+        this.Principal.btnUsuarios.addActionListener(this);
+        this.Principal.btnDash.addActionListener(this);
+        this.Principal.btnConfig.addActionListener(this);
         
         cargarDatos();
     }
@@ -64,6 +69,7 @@ public class ctrPrincipal implements ActionListener {
     private void Salir() {
         if (JOptionPane.showConfirmDialog(this.Principal, "¿Desea salir del sistema?",
                 "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.out.println("Boton Salir ctr");    
             System.exit(0);
         }
     }
@@ -90,17 +96,17 @@ public class ctrPrincipal implements ActionListener {
                     //ConfGeneral();
 
                     break;
-                case "Estructura":
-                    //AbrirListado("Estructura");
+                case "DASH":
+                    AbrirListado("DASH");
 
                     break;
                 case "USUARIOS":
                     AbrirListado("USUARIOS");
                     break;
-                case "Normativa":
+                case "CONFIG":
                     //AbrirListado("Normativa");
                     break;
-                case "ParametrizaEncuadre":
+                case "XXX":
                     //AbrirListado("ParametrizaEncuadre");
                     break;
                 case "Agentes":
@@ -133,7 +139,8 @@ public class ctrPrincipal implements ActionListener {
     private void CerrarApp() {
         if (JOptionPane.showConfirmDialog(Principal, "¿Desea salir del sistema?",
                 "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            hilo.detenerReloj();
+            //hilo.detenerReloj();
+            
             System.exit(0);
         }
     }
@@ -146,22 +153,22 @@ public class ctrPrincipal implements ActionListener {
 //___________________________________________________________________________________ Soy una barra separadora :)
     private void AbrirListado(String AcComando) {
         boolean Listado = true;
-         
-
-        frmListado = new frmListadoBase();
-
+        frmPrincipalMetro m = this.Principal;
+        
         switch (AcComando) {
             case "USUARIOS":
-                
-                new Listado_Usuarios(frmListado).go();
+                System.out.println("Abrir listado USUARIOS");
+                new Listado_Usuarios_Metro(m).go();
                 break;
                 
-            case "Estructura":
-                Listado = false;
+            case "DASH":
+                System.out.println("Abrir DASH");
+                new ctrDash().go();
                 //new ctrAreas(frmEdicion).go();
                 break;
-            case "Normativa":
-                //new ctrNormativaListado(frmListado).go();
+            case "CONFIG":
+            System.out.println("Abrir listado CONFIG");
+//new ctrNormativaListado(frmListado).go();
                 break;
 
             case "ParametrizaEncuadre":
@@ -175,36 +182,14 @@ public class ctrPrincipal implements ActionListener {
                 throw new AssertionError();
         }
 
-        if (Listado) {
-            frmListado.setClosable(true);
-            frmListado.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-            frmListado.toFront();
-            frmListado.setLocation(this.Principal.escritorio.getWidth() / 2 - frmListado.getWidth() / 2, this.Principal.escritorio.getHeight() / 2 - frmListado.getHeight() / 2);
-            this.Principal.escritorio.add(frmListado);
-            try {
-                frmListado.setMaximum(true); //OPCIONAL
-            } catch (Exception ex) {
-                System.out.println("Principal.ControladorPrincipal.AbrirListado()");
-            }
-        } else {
-            //frmEdicion.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
-            //frmEdicion.setClosable(true);
-            //frmEdicion.setLocation(this.Principal.escritorio.getWidth() / 2 - frmListado.getWidth() / 2, this.Principal.escritorio.getHeight() / 2 - frmListado.getHeight() / 2);
-            //frmEdicion.toFront();
-            //this.Principal.escritorio.add(frmEdicion);
-            //try {
-              //  frmEdicion.setMaximum(true); //OPCIONAL
-            //} catch (Exception ex) {
-              //  System.out.println("Principal.ControladorPrincipal.AbrirListado()");
-            //}
-        }
+        
 
     }
 
     private void cargarDatos() {
         usuarioBO boUsuario = new usuarioBO();
         String n = String.valueOf(boUsuario.getTotalUsuarios());
-        this.Principal.lblCantidadUsuarios.setText( n );
+        //Dash.lblDashUsuarios.setText(n);
         
     }
 
