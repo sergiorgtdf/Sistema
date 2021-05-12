@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import vista.SplashScreen;
 import vista.frmPrincipal;
+import vista.frmPrincipalMetro;
 
 
 
@@ -24,14 +25,15 @@ public class Sistema {
                 try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                     
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
                     
                     
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error en en Look and Feel", "Error", ERROR);
                 }
                 
-                new SplashScreen().setVisible(true);
+                new frmPrincipalMetro().setVisible(true);
+                //new SplashScreen().setVisible(true);
             }
         });
     }
