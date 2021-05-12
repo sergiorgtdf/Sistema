@@ -23,10 +23,17 @@ public class Sistema {
             public void run() {
                 
                 try {
+                    //Nimbus
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                    //Metal
+                    //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+                    //CDE/Motif
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
                     
+                    //Windows
                     //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-                    
+                    //Windows Clasico
+                    //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
                     
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error en en Look and Feel", "Error", ERROR);
