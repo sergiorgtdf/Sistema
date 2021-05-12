@@ -127,6 +127,7 @@ public class crtUsuarios implements ActionListener {
         if (!pan.txtId.getText().equalsIgnoreCase("")) {
             try {
                 
+
                 ModifUsuario.setId(Integer.parseInt(pan.txtId.getText()));
                 ModifUsuario.setNombres(pan.txtNombres.getText());
                 ModifUsuario.setApellidos(pan.txtAplellidos.getText());
@@ -145,12 +146,14 @@ public class crtUsuarios implements ActionListener {
                 //JOptionPane.showMessageDialog(null, bo.Actualizar(Integer.parseInt(pan.txtId.getText()), "", pan.txtNombre.getText(), pan.txtDescripcion.getText(), pan.txtRutaArchivo.getText()));
 
             } catch (Exception e) {
+                System.out.println("Controlador.crtUsuarios.Guardar()");
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
 
         } else {
             try {
-                //JOptionPane.showMessageDialog(null, bo.Insertar(pan.txtNombre.getText(), pan.txtDescripcion.getText(), pan.txtRutaArchivo.getText()));
+                JOptionPane.showMessageDialog(null, "Actualizar");
+//JOptionPane.showMessageDialog(null, bo.Insertar(pan.txtNombre.getText(), pan.txtDescripcion.getText(), pan.txtRutaArchivo.getText()));
 
             } catch (Exception e) {
 
