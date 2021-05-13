@@ -20,7 +20,7 @@ public class traerIP {
         String hostname = addr.getHostName();
         
         try {
-            System.out.println("HostName: " + hostname);
+            //System.out.println("HostName: " + hostname);
         } catch (Exception e) {
             System.out.println("No se puede saber el Hostname");
         }

@@ -39,8 +39,8 @@ public class Sistema {
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error en en Look and Feel", "Error", ERROR);
                 }
-                frmPrincipalMetro v = new frmPrincipalMetro();
-                new ctrPrincipalMetro(v).go();
+                new frmPrincipalMetro().setVisible(true);
+                //new ctrPrincipalMetro(v).go();
                 //new frmPrincipalMetro().setVisible(true);
                 //new SplashScreen().setVisible(true);
             }

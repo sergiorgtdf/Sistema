@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.Paneles;
+package vista;
 
 
 import componentes.modal.FadeEffect;
@@ -16,14 +16,14 @@ public class frmModal extends javax.swing.JFrame {
     /**
      * Creates new form editaUsuario
      */
-    public frmModal() {
+    public frmModal(JPanel pPanel) {
        
         initComponents();
-        //this.estepan= pPanel;
-        //this.jEImagePanel1.removeAll();
-        //this.jEImagePanel1.add(this.estepan);
-        //this.jEImagePanel1.revalidate();
-        //this.jEImagePanel1.repaint();
+        this.estepan= pPanel;
+        this.Contenedor.removeAll();
+        this.Contenedor.add(this.estepan);
+        this.Contenedor.revalidate();
+        this.Contenedor.repaint();
         
 
         FadeEffect.transp(this);

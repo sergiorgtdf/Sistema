@@ -5,7 +5,13 @@
  */
 package vista;
 
+import componentes.Reloj;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import vista.Paneles.Config;
+import vista.Paneles.Dash;
+import vista.usuarios.ListadoUsuarios;
+import vista.usuarios.pnlUsuario;
 
 /**
  *
@@ -13,23 +19,38 @@ import javax.swing.JPanel;
  */
 public class frmPrincipalMetro extends javax.swing.JFrame {
 
+    private Reloj hilo;
     JPanel PanelActual;
 
+    Dash dash = new Dash();
     /**
      * Creates new form frmPrincipalMetro
      */
     public frmPrincipalMetro() {
-        //Dash d = new Dash();
 
         initComponents();
 
-       
-        
-        //Contenedor.add(d);
+        Iniciar();
 
-        //Contenedor.revalidate();
-        //Contenedor.repaint();
-        //btnDash.setSelected(true);
+    }
+
+    private void Iniciar() {
+        
+        String tituloVentana = "Sistema - MRG - directo";
+        //Titulo ventana - 
+
+        this.setTitle(tituloVentana);
+        this.lblTitulo.setText(tituloVentana);
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(this.MAXIMIZED_BOTH);//estado maximizado
+
+        //Iniciar Reloj
+        hilo = new Reloj(this.lbHora, this.lblFecha);
+        hilo.start();
+
+        //Mostrar Dash
+        btnDash.setSelected(true);
+        MostrarPanel(dash);
 
     }
 
@@ -53,8 +74,23 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
         Panel_BarraTitulo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Contenedor = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        panHora = new javax.swing.JPanel();
+        lblFecha = new javax.swing.JLabel();
+        lbHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeiconified(java.awt.event.WindowEvent evt) {
+                formWindowDeiconified(evt);
+            }
+        });
 
         Panel_Botonera.setBackground(new java.awt.Color(34, 45, 49));
 
@@ -191,23 +227,62 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
         Contenedor.setBackground(new java.awt.Color(204, 204, 204));
         Contenedor.setLayout(new java.awt.GridLayout(1, 0));
 
+        panHora.setBackground(new java.awt.Color(238, 240, 165));
+        panHora.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFecha.setText("jLabel2");
+
+        lbHora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbHora.setText("jLabel2");
+
+        javax.swing.GroupLayout panHoraLayout = new javax.swing.GroupLayout(panHora);
+        panHora.setLayout(panHoraLayout);
+        panHoraLayout.setHorizontalGroup(
+            panHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbHora, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+            .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panHoraLayout.setVerticalGroup(
+            panHoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panHoraLayout.createSequentialGroup()
+                .addComponent(lbHora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFecha))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Panel_Botonera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Panel_BarraTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
-                    .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Panel_BarraTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(Panel_Botonera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -215,27 +290,41 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDashActionPerformed
-        
-        
+        MostrarPanel(dash);
+
     }//GEN-LAST:event_btnDashActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        
-        
+
+        ListadoUsuarios listUsuario = new ListadoUsuarios();
+        MostrarPanel(listUsuario);
         
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
+        CerrarApp();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        
-                
+        Config config = new Config();
+        MostrarPanel(config);
+
     }//GEN-LAST:event_btnConfigActionPerformed
 
-    
+    private void formWindowDeiconified(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeiconified
+      
+    }//GEN-LAST:event_formWindowDeiconified
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        CerrarApp();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        CerrarApp();
+    }//GEN-LAST:event_formWindowClosed
+
+    
+    
     private void MostrarPanel(JPanel pPanel) {
 
         Contenedor.removeAll();
@@ -243,8 +332,17 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
 
         Contenedor.revalidate();
         Contenedor.repaint();
-        PanelActual = pPanel;
+        
 
+    }
+    
+    private void CerrarApp() {
+        if (JOptionPane.showConfirmDialog(this, "¿Desea salir del sistema?",
+                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            hilo.detenerReloj();
+            
+            System.exit(0);
+        }
     }
 
     public static void main(String args[]) {
@@ -290,6 +388,10 @@ public class frmPrincipalMetro extends javax.swing.JFrame {
     public javax.swing.JToggleButton btnUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JLabel lbHora;
+    public javax.swing.JLabel lblFecha;
     public javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panHora;
     // End of variables declaration//GEN-END:variables
 }

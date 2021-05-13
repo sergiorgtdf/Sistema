@@ -45,18 +45,26 @@ public class usuarioBO {
         
     }
     
-    public int getTotalUsuarios() {
-        return da.getTotalUsuarios();
-    }
-    
-    public void Guardar (usuarioVO Modificacion) throws Exception{
-    
+    public int getTotalUsuarios() throws Exception {
         try {
-            
-            throw new Exception("");
+            return da.getTotalUsuarios();
         } catch (Exception e) {
             throw e;
         }
+        
+    }
+    
+    public boolean Guardar (usuarioVO Modificacion) throws Exception{
+        boolean resp = false;
+        try {
+            if (da.ActualizarUsuario(Modificacion)){
+                resp = true;
+            }
+            
+        } catch (Exception e) {
+            throw e;
+        }
+        return resp;
     }
     
     

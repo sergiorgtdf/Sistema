@@ -48,8 +48,8 @@ public class ctrPrincipalMetro implements ActionListener {
 
         //this.Principal.lblUsuario.setText(Global.UsuarioActual.getNombres());
 
-        //hilo = new Reloj(this.Principal.lbHora, this.Principal.lblFecha);
-        //hilo.start();
+        hilo = new Reloj(this.Principal.lbHora, this.Principal.lblFecha);
+        hilo.start();
 
         //Se añade las acciones a los controles del formulario padre
         this.Principal.btnSalir.setActionCommand("SALIR");
@@ -139,7 +139,7 @@ public class ctrPrincipalMetro implements ActionListener {
     private void CerrarApp() {
         if (JOptionPane.showConfirmDialog(Principal, "¿Desea salir del sistema?",
                 "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            //hilo.detenerReloj();
+            hilo.detenerReloj();
             
             System.exit(0);
         }
@@ -157,13 +157,13 @@ public class ctrPrincipalMetro implements ActionListener {
         
         switch (AcComando) {
             case "USUARIOS":
-                System.out.println("Abrir listado USUARIOS");
+                
                 new Listado_Usuarios_Metro(m).go();
                 break;
                 
             case "DASH":
-                System.out.println("Abrir DASH");
-                new ctrDash().go();
+                
+                new ctrDash(m).go();
                 //new ctrAreas(frmEdicion).go();
                 break;
             case "CONFIG":
@@ -187,9 +187,9 @@ public class ctrPrincipalMetro implements ActionListener {
     }
 
     private void cargarDatos() {
-        usuarioBO boUsuario = new usuarioBO();
-        String n = String.valueOf(boUsuario.getTotalUsuarios());
-        //Dash.lblDashUsuarios.setText(n);
+        
+        AbrirListado("DASH");
+        
         
     }
 

@@ -27,6 +27,7 @@ public class Dash extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         pnlDash = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -46,6 +47,10 @@ public class Dash extends javax.swing.JPanel {
         lblIcono3 = new javax.swing.JLabel();
         lblTitulo3 = new javax.swing.JLabel();
         lblDashUsuarios = new javax.swing.JLabel();
+        lblHost = new javax.swing.JLabel();
+        lblIp = new javax.swing.JLabel();
+
+        jToolBar1.setRollover(true);
 
         pnlDash.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -223,10 +228,20 @@ public class Dash extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        lblHost.setText("jLabel2");
+
+        lblIp.setText("jLabel2");
+
         javax.swing.GroupLayout pnlDashLayout = new javax.swing.GroupLayout(pnlDash);
         pnlDash.setLayout(pnlDashLayout);
         pnlDashLayout.setHorizontalGroup(
             pnlDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDashLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(pnlDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblIp)
+                    .addComponent(lblHost))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlDashLayout.createSequentialGroup()
                 .addGroup(pnlDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDashLayout.createSequentialGroup()
@@ -247,7 +262,7 @@ public class Dash extends javax.swing.JPanel {
                                 .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Likes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 232, Short.MAX_VALUE)))
+                        .addGap(0, 105, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlDashLayout.setVerticalGroup(
@@ -265,7 +280,11 @@ public class Dash extends javax.swing.JPanel {
                 .addGroup(pnlDashLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Sales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Likes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(427, 427, 427))
+                .addGap(111, 111, 111)
+                .addComponent(lblHost)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblIp)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -288,7 +307,9 @@ public class Dash extends javax.swing.JPanel {
     private javax.swing.JPanel Sales;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JToolBar jToolBar1;
     public static javax.swing.JLabel lblDashUsuarios;
+    public javax.swing.JLabel lblHost;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblIcono1;
     private javax.swing.JLabel lblIcono2;
@@ -296,6 +317,7 @@ public class Dash extends javax.swing.JPanel {
     private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblInfo1;
     private javax.swing.JLabel lblInfo2;
+    public javax.swing.JLabel lblIp;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JLabel lblTitulo2;

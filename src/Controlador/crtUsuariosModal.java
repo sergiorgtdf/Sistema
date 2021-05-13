@@ -10,11 +10,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import logica.usuarioBO;
 import modelo.usuarioVO;
 
-import vista.Paneles.frmModal;
-import vista.Paneles.pnlUsuario;
+import vista.frmModal;
+import vista.usuarios.pnlUsuario;
 import vista.frmPrincipalMetro;
 
 /**
@@ -35,18 +36,21 @@ public class crtUsuariosModal implements ActionListener {
     pnlUsuario pan;
 
     public crtUsuariosModal(int pid, JPanel pPanel) {
-        //this.PanelMostrar = pPanel;
-        //System.out.println(this.PanelMostrar.toString());
-        modal = new frmModal();
-        modal.Contenedor.removeAll();
-        modal.Contenedor.add(pPanel);
-        modal.Contenedor.revalidate();
-        modal.Contenedor.repaint();
         
-        System.out.println("Constructor crtUsuarioModal");
-        //modal.setVisible(true);
-        //this.idEditar = pid;
-        //Iniciar();
+        //System.out.println(this.PanelMostrar.toString());
+        this.idEditar = pid;
+        if (idEditar !=0){
+            Iniciar();
+        }else{
+            modal = new frmModal(pPanel);
+        }
+        
+        
+        
+        //System.out.println("Constructor crtUsuarioModal");
+        modal.setVisible(true);
+        
+        Iniciar();
 
     }
 
@@ -54,12 +58,12 @@ public class crtUsuariosModal implements ActionListener {
 
         try {
 
-            //pan = new pnlUsuario();
+            pan = new pnlUsuario();
 
             //pan.setLocation(0, 59);
-            //this.modal.add(pan);
-            //pan.setSize(500, 500);
-            //pan.setLocation(50, 50);
+            this.modal.add(pan);
+
+
 
             bo = new usuarioBO();
 
@@ -77,7 +81,7 @@ public class crtUsuariosModal implements ActionListener {
 
     public void go() {
         //modal = new frmModal(PanelMostrar);
-        //modal.setVisible(true);
+        modal.setVisible(true);
     }
 
     @Override
@@ -137,5 +141,9 @@ public class crtUsuariosModal implements ActionListener {
         }
 
     }
+
+    
+//     
+//    
 
 }

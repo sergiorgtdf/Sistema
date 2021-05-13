@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import logica.usuarioBO;
 import modelo.usuarioVO;
 import vista.*;
-import vista.Paneles.pnlUsuario;
+import vista.usuarios.pnlUsuario;
 
 /**
  *

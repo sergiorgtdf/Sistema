@@ -3,41 +3,75 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.Paneles;
+package vista.usuarios;
 
-
-import Controlador.crtUsuariosModal;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import logica.usuarioBO;
 import modelo.usuarioVO;
+import vista.frmPrincipalMetro;
 
-/**
- *
- * @author Sergio Olmedo
- */
 public class ListadoUsuarios extends javax.swing.JPanel {
 
+    frmPrincipalMetro principal;
     usuarioBO bo;
-    
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public ListadoUsuarios() {
         initComponents();
         Iniciar();
     }
-    
+
     private void Iniciar() {
-        
-        
-        bo = new usuarioBO();
         CargarDatos(0, "");
-        
-    }
-    
-    public static void main(String[] args) {
-        new ListadoUsuarios().setVisible(true);
     }
 
+    private void CargarDatos(int pid, String pBusqueda) {
+
+        bo = new usuarioBO();
+        String strBusqueda = txtBuscar.getText();
+        try {
+
+            DefaultTableModel modelotabla;
+
+            Object columnas[] = {"id", "Nombre", "Apellidos", "Tipo Doc", "Documento", "Fecha de Nacimento", "Fecha Alta", "Fecha Baja", "Estado", "Eliminado", "Nombre Usuario", "Contraseña", "Fecha Contraseña"};
+
+            //Crea el modelo de la tabla y hace que las columnas no sean editables
+            modelotabla = new DefaultTableModel(columnas, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+                    //Cambiar el 3 por el maximo numero de columnas de la tabla
+                    if (column == 13) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+            };
+
+            datos.setModel(modelotabla);
+
+            ArrayList<usuarioVO> filas = bo.getListado(0, strBusqueda);
+
+            for (int i = 0; i < filas.size(); i++) {
+                //{"id", "Nombre", "Apellidos", "Tipo Doc", "Documento", "Fecha de Nacimento", "Fecha Alta", "Fecha Baja", "Estado", "Eliminado", "Nombre Usuario", "Contraseña", "Fecha Contraseña"};
+                modelotabla.addRow(new Object[]{filas.get(i).getId(), filas.get(i).getNombres(), filas.get(i).getApellidos(), filas.get(i).getTipo_doc(), filas.get(i).getDocumento(), filas.get(i).getFecha_nacimiento(),
+                    filas.get(i).getFecha_alta(), filas.get(i).getFecha_baja(), filas.get(i).getEstado(), filas.get(i).getEliminado(), filas.get(i).getUsuario(), filas.get(i).getPass(), filas.get(i).getFechaPass()});
+            }
+            lblCantidadRegistros.setText(String.valueOf(filas.size()));
+        } catch (Exception e) {
+            System.err.println("Listado Usuario");
+            JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
+        }
+
+    }
+
+//    public static void main(String[] args) {
+//        new ListadoUsuarios().setVisible(true);
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,6 +91,7 @@ public class ListadoUsuarios extends javax.swing.JPanel {
         lblCantidadRegistros = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,10 +145,19 @@ public class ListadoUsuarios extends javax.swing.JPanel {
 
         btnEditar.setBackground(new java.awt.Color(255, 153, 153));
         btnEditar.setText("Editar");
-        btnEditar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnEditar.setBorder(null);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnNuevo.setBackground(new java.awt.Color(0, 204, 0));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -128,6 +172,8 @@ public class ListadoUsuarios extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(182, 182, 182)
                 .addComponent(jLabel1)
@@ -149,7 +195,9 @@ public class ListadoUsuarios extends javax.swing.JPanel {
                         .addContainerGap(22, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -165,22 +213,10 @@ public class ListadoUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        //pnlUsuario user = new pnlUsuario();
-        //frmModal modal = new frmModal(user);
-        
-        //new crtUsuariosModal(0, user);
-        
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
 
-    
-    
-    
-    private void Editar() {
         int Seleccionado = 0;
         int idSeleccionado = 0;
 
-        
         try {
             Seleccionado = datos.getSelectedRow();
             if (Seleccionado == -1) {
@@ -190,70 +226,38 @@ public class ListadoUsuarios extends javax.swing.JPanel {
                 idSeleccionado = Integer.parseInt(String.valueOf(datos.getValueAt(Seleccionado, 0).toString()));
                 System.out.println("idseleccionado: " + idSeleccionado);
                 try {
-                    //new crtUsuarios(formListado,idSeleccionado).go();
+                    //Cargar formulairio modal
+                    frmEditaUsuario edit = new frmEditaUsuario(principal, true, idSeleccionado);
+                    edit.setVisible(true);
+                    
                 } catch (Exception e) {
                     System.out.println("Controlador.Listado_Usuarios.Editar()");
+                    JOptionPane.showMessageDialog(null, "Error; " + e.getMessage());
                 }
-
-      
 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }
-    
-    private void CargarDatos(int pid, String pBusqueda) {
 
-        String strBusqueda = txtBuscar.getText();
-        try {
+    }//GEN-LAST:event_btnEditarActionPerformed
 
-            DefaultTableModel modelotabla;
-
-            Object columnas[] = {"id", "Nombre", "Apellidos", "Tipo Doc", "Documento", "Fecha de Nacimento", "Fecha Alta", "Fecha Baja", "Estado", "Eliminado", "Nombre Usuario", "Contraseña", "Fecha Contraseña"};
-
-            //Crea el modelo de la tabla y hace que las columnas no sean editables
-            modelotabla = new DefaultTableModel(columnas, 0) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    //return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
-                    //Cambiar el 3 por el maximo numero de columnas de la tabla
-                    if (column == 13) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-
-            };
-
-            datos.setModel(modelotabla);
-
-            ArrayList<usuarioVO> filas = bo.getListado(0, strBusqueda);
-
-            for (int i = 0; i < filas.size(); i++) {
-            //{"id", "Nombre", "Apellidos", "Tipo Doc", "Documento", "Fecha de Nacimento", "Fecha Alta", "Fecha Baja", "Estado", "Eliminado", "Nombre Usuario", "Contraseña", "Fecha Contraseña"};
-                modelotabla.addRow(new Object[]{filas.get(i).getId(), filas.get(i).getNombres(), filas.get(i).getApellidos(), filas.get(i).getTipo_doc(), filas.get(i).getDocumento(), filas.get(i).getFecha_nacimiento(),
-                filas.get(i).getFecha_alta(), filas.get(i).getFecha_baja(), filas.get(i).getEstado(), filas.get(i).getEliminado(), filas.get(i).getUsuario(), filas.get(i).getPass(), filas.get(i).getFechaPass()});
-            }
-           lblCantidadRegistros.setText( String.valueOf(filas.size()));
-        } catch (Exception e) {
-            System.out.println("Controlador.Listado_Usuarios.CargarDatos()");
-            JOptionPane.showMessageDialog(null, "Error " + e.getMessage());
-        }
-
-    }
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        frmEditaUsuario edit = new frmEditaUsuario(principal, true);
+        edit.setVisible(true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEditar;
+    public javax.swing.JButton btnNuevo;
     public javax.swing.JTable datos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblCantidadRegistros;
+    public javax.swing.JLabel lblCantidadRegistros;
     public javax.swing.JLabel lblTitulo;
     public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

@@ -39,7 +39,7 @@ public class usuarioDA {
             sql = "Select * from usuario where usuario like '%" + pBusqueda + "%' and eliminado = 'N'";
         }
 
-        System.out.println(sql);
+        //System.out.println(sql);
         try {
             Statement st = cx.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -65,14 +65,14 @@ public class usuarioDA {
             }
         } catch (SQLException e) {
 
-            System.out.println("Acceso_Datos.usuarios.usuarioDA.ObtenerUsuarios()");
-
+            System.out.println("Acceso_Datos.usuarios.usuarioDA.ObtenerUsuarios() " + e.getMessage());
+            
         }
 
         return Listado;
     }
 
-    public int getTotalUsuarios() {
+    public int getTotalUsuarios() throws SQLException {
 
         int Cantidad = 0;
 
@@ -91,8 +91,10 @@ public class usuarioDA {
             }
         } catch (SQLException e) {
 
+            
             System.out.println("Acceso_Datos.usuarios.usuarioDA.ObtenerUsuarios()");
 
+            throw e;
         }
 
         return Cantidad;
@@ -179,20 +181,34 @@ public class usuarioDA {
         boolean resp = false;
         int r=0;
         String sql = "update usuario set "
-                + "Nombres=?, "
-                + "apellidos=?, "
-                + "tipo_doc=?, "
-                + "documento=?, "
-                + "fecha_nacimiento, "
-                + "estado=?, "
-                + "usuario=?, "
-                + "pass=? "
-                + "where id=?";
+                + "Nombre= '" + mod.getNombres() + "', "
+                + "apellido= '" + mod.getApellidos()+ "', "
+                + "tipo_doc= " + mod.getTipo_doc()+ ", "
+                + "documento= '" + mod.getDocumento()+ "', "
+                + "fecha_nacimiento= '" + mod.getFecha_nacimiento()+ "', "
+                + "estado= " + mod.getEstado()+ ", "
+                + "usuario= '" + mod.getUsuario()+ "', "
+                + "pass= '" + mod.getPass()+ "' "
+                + "where id= " + mod.getId(); 
         
+        
+         String sql1 = "update usuario set "
+                + "Nombre= ?, "
+                + "apellido= ?, "
+                + "tipo_doc= ?, "
+                + "documento= ?, "
+                + "fecha_nacimiento= ?, "
+                + "estado= ?, "
+                + "usuario= ?, "
+                + "pass= ? "
+                + "where id= ?"; 
+        
+                System.out.println("Sql update: " + sql1);
+        System.out.println("Id - " + mod.getId() + " (" + mod.getApellidos() + ")");
         try {
             
-            cx.setAutoCommit(false);
-            ps = cx.prepareStatement(sql);
+            //cx.setAutoCommit(false);
+            ps = cx.prepareStatement(sql1);
             
             ps.setString(1, mod.getNombres());
             ps.setString(2, mod.getApellidos());
@@ -208,7 +224,7 @@ public class usuarioDA {
             
             r = ps.executeUpdate();
             
-            cx.commit();
+            //cx.commit();
             
             
             if (r == 1) {

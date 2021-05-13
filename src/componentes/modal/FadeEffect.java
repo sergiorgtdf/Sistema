@@ -77,4 +77,11 @@ public class FadeEffect {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         frame.setBounds(0, 0, screenSize.width, screenSize.height);
     }
+    
+    public static void transp(JDialog dialog) {
+        dialog.setBackground(new Color(0, 0, 0, 0));
+        dialog.setOpacity(0.6F);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        dialog.setBounds(0, 0, screenSize.width, screenSize.height);
+    }
 }

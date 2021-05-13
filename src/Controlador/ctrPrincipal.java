@@ -203,8 +203,8 @@ public class ctrPrincipal implements ActionListener {
 
     private void cargarDatos() {
         usuarioBO boUsuario = new usuarioBO();
-        String n = String.valueOf(boUsuario.getTotalUsuarios());
-        this.Principal.lblCantidadUsuarios.setText( n );
+        //String n = String.valueOf(boUsuario.getTotalUsuarios());
+        //this.Principal.lblCantidadUsuarios.setText( n );
         
     }
 
