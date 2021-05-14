@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.usuarios;
+package usuarios;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logica.usuarioBO;
 import modelo.usuarioVO;
 import vista.frmPrincipalMetro;
 

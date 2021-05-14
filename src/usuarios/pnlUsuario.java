@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.usuarios;
+package usuarios;
 
-import sun.java2d.d3d.D3DRenderQueue;
+
 
 /**
  *

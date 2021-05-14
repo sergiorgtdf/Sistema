@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import logica.usuarioBO;
+import usuarios.usuarioBO;
 import modelo.usuarioVO;
 
 import vista.frmModal;
-import vista.usuarios.pnlUsuario;
+import usuarios.pnlUsuario;
 import vista.frmPrincipalMetro;
 
 /**

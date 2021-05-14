@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import logica.usuarioBO;
+import usuarios.usuarioBO;
 import modelo.usuarioVO;
 import vista.*;
-import vista.usuarios.pnlUsuario;
+import usuarios.pnlUsuario;
 
 /**
  *

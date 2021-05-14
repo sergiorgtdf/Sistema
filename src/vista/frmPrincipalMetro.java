@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import vista.Paneles.Config;
 import vista.Paneles.Dash;
-import vista.usuarios.ListadoUsuarios;
-import vista.usuarios.pnlUsuario;
+import usuarios.ListadoUsuarios;
+import usuarios.pnlUsuario;
 
 /**
  *

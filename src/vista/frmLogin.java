@@ -6,7 +6,7 @@
 package vista;
 
 import Controlador.ctrPrincipal;
-import logica.usuarioBO;
+import usuarios.usuarioBO;
 import javax.swing.JOptionPane;
 import sistema.Global;
 

@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import logica.usuarioBO;
+import usuarios.usuarioBO;
 import sistema.Global;
 import vista.frmListadoBase;
 import vista.frmPrincipal;

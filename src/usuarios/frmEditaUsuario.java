@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista.usuarios;
+package usuarios;
 
 import componentes.modal.FadeEffect;
 import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import logica.usuarioBO;
 import modelo.usuarioVO;
 
 /**
@@ -357,7 +356,7 @@ public class frmEditaUsuario extends javax.swing.JDialog {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         //Grabar los datos en otro objeto
-        System.out.println("fecha nac: " + dtpFechaNac.getUI().toString() );
+
         //Date fec = (Date) dtpFechaNac.getDate();
         
         for (usuarioVO datoMod : usuario) {

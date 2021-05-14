@@ -2,7 +2,7 @@
 package logica;
 
 import DataAccess.menuDA;
-import DataAccess.usuarioDA;
+import usuarios.usuarioDA;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.menuVO;

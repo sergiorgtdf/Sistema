@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import logica.usuarioBO;
+import usuarios.usuarioBO;
 import modelo.usuarioVO;
 import vista.Paneles.Dash;
-import vista.usuarios.ListadoUsuarios;
+import usuarios.ListadoUsuarios;
 import vista.frmListadoBase;
 import vista.frmPrincipalMetro;
 
